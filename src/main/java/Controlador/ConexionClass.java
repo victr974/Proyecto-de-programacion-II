@@ -33,20 +33,20 @@ public class ConexionClass {
     String cadena = "";
     PreparedStatement ps;
     ResultSet rs;
-    
+ 
 public boolean InsertUsuario(Usuario user) {
     
-    cadena = "INSERT INTO usuario ( UserName,contraseña,tipoNivel,nombre,email, telefono)" + "VALUES(?,?,?,?,?)";
+    cadena = "INSERT INTO usuario ( UserName,contraseña,nombre,email,telefono,tipoNivel)" + "VALUES(?,?,?,?,?,?)";
     
     try {
         conn = conectar.getConection();
         ps = conn.prepareStatement(cadena);
         ps.setString(1, user.getUsernameUsuario());
         ps.setString(2, user.getContraseñaUsuario());
-        ps.setString(3, user.getTipoNivelUsuario());
-        ps.setString(4, user.getNombre());
-        ps.setString(5, user.getEmailUsuario());
-        ps.setString(6, user.getTelefono());
+        ps.setString(3, user.getNombre());
+        ps.setString(4, user.getEmailUsuario());
+        ps.setString(5, user.getTelefono());
+        ps.setString(6, user.getTipoNivelUsuario());
         
         int n = ps.executeUpdate();
         if (n != 0) {
@@ -61,7 +61,7 @@ public boolean InsertUsuario(Usuario user) {
     }
 
     public boolean insertarCliente(Cliente cli) {
-        cadena = "insert into clientes(nombre,dni,ruc,telefono,correo,ciudad)" + "values(?,?,?,?,?,?)";
+        cadena = "INSERT INTO clientes(nombre,dni,ruc,telefono,correo,ciudad)" + "values(?,?,?,?,?,?)";
 
         try {
             ps = conn.prepareStatement(cadena);
@@ -85,10 +85,10 @@ public boolean InsertUsuario(Usuario user) {
     }
     
     public boolean insertarMesero(Mesero mes) {
-        cadena = "insert into Mesero(nombre,telefono,email,contraseña,userName,numeroMesero)" + "values(?,?,?,?,?,?)";
+        cadena = "INSERT INTO mesero(nombre,telefono,email,contraseña,userName,numeroMesero)" + "values(?,?,?,?,?,?)";
 
         try {
-            ps = conn.prepareStatement(cadena);
+              ps = conn.prepareStatement(cadena);
             ps.setString(1, mes.getNombre());
             ps.setString(2, mes.getTelefono());
             ps.setString(3, mes.getEmailUsuario());
@@ -108,7 +108,7 @@ public boolean InsertUsuario(Usuario user) {
     }    
     
      public boolean insertarAdministrador(Administrador adm) {
-        cadena = "insert into Administrador(nombre,telefono,email,contraseña,username)"+ "values(?,?,?,?,?)";
+        cadena = "INSERT INTO administrador(nombre,telefono,email,contraseña,username)"+"values(?,?,?,?,?)";
 
         try {
              ps = conn.prepareStatement(cadena);
@@ -133,7 +133,7 @@ public boolean InsertUsuario(Usuario user) {
     
     
     public boolean insertarBoleta(Boleta bo) {
-        cadena = "insert into Boleta(nombre,dni,telefono,atendidoPor,fecha,subTotal,igv,montoTotal)"+ "values(?,?,?,?,?,?,?,?)";
+        cadena = "INSERT INTO boleta(nombre,dni,telefono,atendidoPor,fecha,subTotal,igv,montoTotal)"+ "values(?,?,?,?,?,?,?,?)";
 
         try {
             ps = conn.prepareStatement(cadena);
@@ -159,7 +159,7 @@ public boolean InsertUsuario(Usuario user) {
     }
     
      public boolean insertarFactura(Factura fac) {
-        cadena = "insert into Factura(fecha,montoTotal,ciudad,ruc,correo,nombre,telefono,subTotal,atendidoPor)"+ "values(?,?,?,?,?,?,?,?,?)";
+        cadena = "INSERT INTO Factura(fecha,montoTotal,ciudad,ruc,correo,nombre,telefono,subTotal,atendidoPor)"+ "values(?,?,?,?,?,?,?,?,?)";
         try {
             ps = conn.prepareStatement(cadena);
             ps.setString(1, fac.getFecha());
@@ -184,7 +184,7 @@ public boolean InsertUsuario(Usuario user) {
     }
      
         public boolean insertarPlato(Platos plat) {
-        cadena = "insert into restaurante.plato_pedido(nombrePlato, cantidadPlato, precioPlato, montoPlato)"+ "values(?,?,?,?)";
+        cadena = "insert into restaurante.plato_pedido(nombreplato, cantidadplato, precioplato, montoplato)"+ "values(?,?,?,?)";
 
         try {
             conn = conectar.getConection();
@@ -229,7 +229,7 @@ public boolean InsertUsuario(Usuario user) {
     }
      
      public boolean insertarPedido(InfoCategotia info) {
-        cadena = "insert into pedido(descripcion, cantidad, precio, monto, numeropedido)" + "values(?,?,?,?,?)";
+        cadena = "insert into pedido(descripcion, cantidad, precio, Monto, numeropedido)" + "values(?,?,?,?,?)";
         try {
             ps = conn.prepareStatement(cadena);
             ps.setString(1, info.getDescripcion());
@@ -276,7 +276,7 @@ public boolean InsertUsuario(Usuario user) {
 
         int con = 1;
         try {
-            Statement st = conn.createStatement();
+             Statement st = conn.createStatement();
              rs = st.executeQuery(cadena);
             if (rs.next()) {
 

@@ -1,10 +1,7 @@
-//Si se usa
+
 package Clases;
 
-/**
- *
- * @author Frank
- */
+
 public class Platos extends InfoCategotia{
 
 

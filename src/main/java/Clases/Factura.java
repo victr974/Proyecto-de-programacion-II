@@ -1,10 +1,7 @@
-//Si se usa
+
 package Clases;
 
-/**
- *
- * @author Frank
- */
+
 public class Factura extends Cliente {
     private Double igv;
     private String fecha;
